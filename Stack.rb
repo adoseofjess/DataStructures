@@ -1,5 +1,5 @@
 class Stack
-	def initialize
+  def initialize
     @stack = []
   end
 
