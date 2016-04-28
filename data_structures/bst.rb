@@ -44,4 +44,27 @@ class BinarySearchTree
 
     current_node.root_value
   end
+
+  def find_max_iteratively
+    return @root_value if @right.nil? 
+
+    current_node = self
+    until current_node.right.nil?
+      current_node = @right.right
+    end
+
+    current_node.root_value
+  end
+
+  def find_min_recursively
+    return @root_value if @left.nil? 
+
+    @left.find_min_recursively
+  end
+
+  def find_max_recursively
+    return @root_value if @right.nil? 
+
+    @right.find_max_recursively
+  end
 end

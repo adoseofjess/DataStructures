@@ -67,5 +67,29 @@ describe BinarySearchTree do
         expect(one_node_tree.find_min_iteratively).to eq(5)
       end
     end
+
+    describe "#find_min_recursively" do
+      let(:one_node_tree) { BinarySearchTree.new(5) }
+
+      it 'finds the minimum value' do
+        expect(tree.find_min_recursively).to eq(1)
+      end
+
+      it 'finds the minimum value for a tree with one node' do
+        expect(one_node_tree.find_min_recursively).to eq(5)
+      end
+    end
+
+    describe "#find_max_recursively" do
+      let(:one_node_tree) { BinarySearchTree.new(5) }
+
+      it 'finds the maximum value' do
+        expect(tree.find_max_recursively).to eq(10)
+      end
+
+      it 'finds the maximum value for a tree with one node' do
+        expect(one_node_tree.find_max_recursively).to eq(5)
+      end
+    end
   end
 end
