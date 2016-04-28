@@ -56,6 +56,20 @@ describe BinarySearchTree do
       end
     end
 
+    describe "#search_iteratively" do
+      it 'finds node to left of root node' do
+        expect(tree.search_iteratively(2)).to eq(true)
+      end
+
+      it 'finds node to right of root node' do
+        expect(tree.search_iteratively(10)).to eq(true)
+      end
+
+      it 'returns false for unfound node' do
+        expect(tree.search_iteratively(100)).to eq(false)
+      end
+    end
+
     describe "#find_min_iteratively" do
       let(:one_node_tree) { BinarySearchTree.new(5) }
 

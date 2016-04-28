@@ -29,6 +29,18 @@ class BinarySearchTree
   end
 
   def search_iteratively(value)
+    current_node = self
+    while !current_node.nil?
+      if value < current_node.root_value
+        current_node = current_node.left
+      elsif value > current_node.root_value
+        current_node = current_node.right
+      else 
+        return true
+      end
+    end
+
+    return false
   end
 
   def delete(value)
