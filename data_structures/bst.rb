@@ -14,7 +14,7 @@ class BinarySearchTree
     else
       @left ? @left.insert(value) : @left = BinarySearchTree.new(value, self)
     end
-    
+
     self
   end
 
@@ -34,7 +34,14 @@ class BinarySearchTree
   def delete(value)
   end
 
-  # def inspect
-  #   "tree"
-  # end
+  def find_min_iteratively
+    return @root_value if @left.nil? 
+
+    current_node = self
+    until current_node.left.nil?
+      current_node = @left.left
+    end
+
+    current_node.root_value
+  end
 end
