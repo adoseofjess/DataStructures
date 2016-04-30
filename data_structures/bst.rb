@@ -79,4 +79,57 @@ class BinarySearchTree
 
     @right.find_max_recursively
   end
+
+  def find_height
+    return 0 if (@left.nil? && @right.nil?)
+
+    left_height = (@left ? @left.find_height : 0)
+    right_height = (@right ? @right.find_height : 0)
+    1 + (left_height >= right_height ? left_height : right_height)
+  end
+
+  # breadth first strategy for visiting all nodes by level
+  def level_order_traversal
+    nodes_to_visit = []
+    visited_nodes = []
+    
+    nodes_to_visit.push(self)
+    
+    while !nodes_to_visit.empty?
+      node_to_visit = nodes_to_visit.shift
+      visited_nodes.push(node_to_visit.root_value)
+
+      nodes_to_visit.push(node_to_visit.left) if node_to_visit.left
+      nodes_to_visit.push(node_to_visit.right) if node_to_visit.right
+    end
+
+    visited_nodes
+  end
+
+  # depth first strategy for visiting nodes by root, left, right order
+  def pre_order_traversal
+    nodes = []
+    nodes.push(@root_value)
+    nodes += @left.pre_order_traversal if @left
+    nodes += @right.pre_order_traversal if @right
+    nodes
+  end
+
+  # depth first strategy for visiting nodes by left, root, right order
+  def in_order_traversal
+    nodes = []
+    nodes += @left.in_order_traversal if @left
+    nodes.push(@root_value)
+    nodes += @right.in_order_traversal if @right
+    nodes
+  end
+
+  # depth first strategy for visiting nodes by left, root, right order
+  def post_order_traversal
+    nodes = []
+    nodes += @left.post_order_traversal if @left
+    nodes += @right.post_order_traversal if @right
+    nodes.push(@root_value)
+    nodes
+  end
 end
